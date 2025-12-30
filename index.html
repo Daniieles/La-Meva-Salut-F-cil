@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <!-- Definición del tipo de documento y configuración básica -->
+    <meta charset="UTF-8">
+
+    <!-- Configuración para dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>La Meva Salut Fàcil</title>
+
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= PANTALLA DE CARGA ================= -->
+<div id="loading-screen">
+    <div class="loading-content">
+        <!-- Icono decorativo -->
+        <div class="icon">❤️</div>
+
+        <!-- Título -->
+        <h1>La Meva Salut Fàcil Plus</h1>
+
+        <!-- Subtítulo -->
+        <p>Dissenyat per a tu, amb paciència i senzillesa</p>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <!-- Texto informativo -->
+        <p class="loading-text">Si us plau, espera un moment...</p>
+    </div>
+</div>
+
+<!-- ================= CONTENEDOR PRINCIPAL ================= -->
+<div class="app">
+
+    <!-- Botón para activar/desactivar la voz -->
+    <button id="activarVozBtn" class="voice-on" onclick="toggleVoz()">🔊</button>
+
+    <!-- ================= LOGIN ================= -->
+    <div id="login">
+        <h1>Benvingut/da!</h1>
+        <p>Introdueix el teu número de targeta sanitària:</p>
+
+        <!-- Input tarjeta -->
+        <input type="text" id="tarjeta" placeholder="Targeta sanitària">
+
+        <!-- Botón entrar -->
+        <button class="btn blau" onclick="verificarTarjeta()">Entrar</button>
+
+        <!-- Botón ayuda por voz -->
+        <button class="voice" onclick="llegirText('login')">🔊 Escoltar ajuda</button>
+    </div>
+
+    <!-- ================= MENÚ PRINCIPAL ================= -->
+    <div id="menu-principal" class="hidden">
+        <h1>La Meva Salut Fàcil</h1>
+
+        <button class="voice" onclick="llegirText('menu')">🔊 Escoltar ajuda</button>
+        <button class="btn blau" onclick="mostrarSeccio('cita')">🏥 Demanar cita mèdica</button>
+        <button class="btn verd" onclick="mostrarSeccio('meves-cites')">📅 Les meves cites</button>
+        <button class="btn taronja" onclick="mostrarSeccio('medicaments')">💊 Els meus medicaments</button>
+        <button class="btn lila" onclick="mostrarSeccio('resultats')">🧾 Resultats de proves</button>
+        <button class="btn vermell" onclick="mostrarSeccio('ajuda')">❓ Ajuda</button>
+    </div>
+
+    <!-- ================= DEMANAR CITA ================= -->
+    <div id="cita" class="hidden">
+        <p>Selecciona el metge:</p>
+
+        <button class="btn blau" onclick="pasCita(1,'Metge de capçalera')">Metge de capçalera</button>
+        <button class="btn blau" onclick="pasCita(1,'Infermer/a')">Infermer/a</button>
+
+        <!-- Contenedores dinámicos -->
+        <div id="seleccio-dia" class="hidden"></div>
+        <div id="seleccio-hora" class="hidden"></div>
+
+        <button class="btn vermell" onclick="tornarMenu()">⬅️ Tornar al menú</button>
+        <button class="voice" onclick="llegirText('cita')">🔊 Escoltar ajuda</button>
+    </div>
+
+    <!-- ================= MEVES CITES ================= -->
+    <div id="meves-cites" class="hidden">
+        <h2>Les meves cites</h2>
+        <ul id="llista-cites"></ul>
+
+        <button class="btn vermell" onclick="tornarMenu()">⬅️ Tornar al menú</button>
+        <button class="voice" onclick="llegirText('meves-cites')">🔊 Escoltar ajuda</button>
+    </div>
+
+    <!-- ================= MEDICAMENTS ================= -->
+    <div id="medicaments" class="hidden">
+        <p>Aquí veus els teus medicaments i els seus horaris.</p>
+
+        <button class="btn vermell" onclick="tornarMenu()">⬅️ Tornar al menú</button>
+        <button class="voice" onclick="llegirText('medicaments')">🔊 Escoltar ajuda</button>
+    </div>
+
+    <!-- ================= RESULTATS ================= -->
+    <div id="resultats" class="hidden">
+        <p>Aquí veus els resultats dels teus exàmens recents.</p>
+
+        <button class="btn vermell" onclick="tornarMenu()">⬅️ Tornar al menú</button>
+        <button class="voice" onclick="llegirText('resultats')">🔊 Escoltar ajuda</button>
+    </div>
+
+    <!-- ================= AJUDA ================= -->
+    <div id="ajuda" class="hidden">
+        <p>Selecciona una opció d'ajuda:</p>
+
+        <button class="btn blau" onclick="alert('Trucant al familiar... 📞')">📞 Trucar a familiar</button>
+        <button class="btn verd" onclick="alert('Trucant a assistent... 📞')">🧑‍⚕️ Trucar a assistent</button>
+
+        <button class="btn vermell" onclick="tornarMenu()">⬅️ Tornar al menú</button>
+        <button class="voice" onclick="llegirText('ajuda')">🔊 Escoltar ajuda</button>
+    </div>
+
+</div>
+
+<!-- Enlace al archivo JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
